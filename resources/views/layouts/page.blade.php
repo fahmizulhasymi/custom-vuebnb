@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ mix('css/component-style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ mix('css/vendors.css') }}" type="text/css">
 </head>
 

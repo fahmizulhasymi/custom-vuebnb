@@ -12,6 +12,9 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+    .options({
+        extractVueStyles: 'public/css/component-style.css'
+    })
     .styles([
         'node_modules/open-sans-all/css/open-sans.css',
         'node_modules/font-awesome/css/font-awesome.css',
