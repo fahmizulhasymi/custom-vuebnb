@@ -6,6 +6,8 @@ $factory->define(App\Listing::class, function (Faker $faker) {
     return [
         'title' => $faker->streetName,
         'address' => $faker->address,
+        'city' => $faker->city,
+        'country' => $faker->country,
         'about' => $faker->realText(400, 2),
 
         'amenity_wifi' => $faker->boolean(50),

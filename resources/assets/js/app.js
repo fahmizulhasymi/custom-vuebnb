@@ -3,7 +3,6 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import "core-js/fn/object/assign";
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -14,9 +13,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import ListingDetail from './components/ListingDetail.vue';
+import App from './App.vue';
+import router from './router'
 
 const app = new Vue({
     el: '#app',
-    render: h => h(ListingDetail)
+    render: h => h(App),
+    router
 });

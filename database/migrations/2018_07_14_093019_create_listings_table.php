@@ -17,6 +17,8 @@ class CreateListingsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('address');
+            $table->string('city');
+            $table->string('country');
             $table->longText('about');
             // Amenities
             $table->boolean('amenity_wifi')->default(false);

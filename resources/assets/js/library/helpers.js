@@ -51,13 +51,25 @@ export { populateAmenitiesAndPrices };
 let groupByCountry = function (listings) {
   if (!listings) return {};
   return listings.reduce(function (rv, x) {
-    let key = ['Taiwan', 'Poland', 'Cuba'].find(country => x.address.indexOf(country) > -1);
-    if (!rv[key]) {
-      rv[key] = [];
+    if (!rv[x.country]) {
+      rv[x.country] = [];
     }
-    rv[key].push(x);
+    rv[x.country].push(x);
     return rv;
   }, {});
 };
 
 export { groupByCountry };
+
+let groupByCity = function (listings) {
+  if (!listings) return {};
+  return listings.reduce(function (rv, x) {
+    if (!rv[x.city]) {
+      rv[x.city] = [];
+    }
+    rv[x.city].push(x);
+    return rv;
+  }, {});
+};
+
+export { groupByCity };

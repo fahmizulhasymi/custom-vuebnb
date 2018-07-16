@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <header-image :image-url="images[0]" @header-clicked="openModal"></header-image>
+    <div class="listing-container">
+        <header-image v-if="images[0]" :image-url="images[0]" @header-clicked="openModal"></header-image>
         <div class="container">
             <div class="heading">
                 <h1>{{ title }}</h1>
@@ -32,19 +32,26 @@
     </div>
 </template>
 <script>
-import { populateAmenitiesAndPrices } from "../helpers";
+import { populateAmenitiesAndPrices } from "../library/helpers";
+import routeMixin from "../mixin/route-mixin";
 
-let model = JSON.parse(window.vuebnb_listing_model);
-model = populateAmenitiesAndPrices(model);
-import ImageCarousel from "./ImageCarousel.vue";
-import ModalWindow from "./ModalWindow.vue";
-import FeatureList from "./FeatureList.vue";
-import HeaderImage from "./HeaderImage.vue";
-import ExpandableText from "./ExpandableText.vue";
+import ImageCarousel from "../components/ImageCarousel.vue";
+import ModalWindow from "../components/ModalWindow.vue";
+import FeatureList from "../components/FeatureList.vue";
+import HeaderImage from "../components/HeaderImage.vue";
+import ExpandableText from "../components/ExpandableText.vue";
 
 export default {
+  mixins: [routeMixin],
   data() {
-    return Object.assign(model, {});
+    return {
+      title: null,
+      about: null,
+      address: null,
+      amenities: [],
+      prices: [],
+      images: []
+    };
   },
   components: {
     ImageCarousel,
@@ -54,6 +61,9 @@ export default {
     ExpandableText
   },
   methods: {
+    assignData({ listing }) {
+      Object.assign(this.$data, populateAmenitiesAndPrices(listing));
+    },
     openModal() {
       this.$refs.imagemodal.modalOpen = true;
     }
@@ -61,15 +71,25 @@ export default {
 };
 </script>
 <style>
+.listing-container {
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+@media (min-width: 744px) {
+    .listing-container {
+        width: 696px;
+    }
+}
 .about {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
 .about h3 {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .about p {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 </style>

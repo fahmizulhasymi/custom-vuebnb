@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Listing;
 use App\Services\ListingService;
 
@@ -15,7 +16,8 @@ class ListingController extends Controller
      */
     public function index()
     {
-        return Listing::take(10)->toJson();
+        $data = ListingService::get_listing_summaries();
+        return response()->json($data);
     }
 
     /**
@@ -37,7 +39,7 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
-        $model = $listing->toArray();
+        $model = ListingService::get_listing($listing);
         $model = ListingService::add_image_urls($model, $listing->id);
 
         return response()->json($model);
