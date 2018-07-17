@@ -14,5 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'ListingController@index')->name('home');
+Route::get('/saved', 'ListingController@saved')->name('saved');
 Route::get('/listing/{listing}', 'ListingController@show')->name('listing-detail');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');

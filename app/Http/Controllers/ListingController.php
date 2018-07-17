@@ -22,6 +22,11 @@ class ListingController extends Controller
         return view('app.listing', ['data' => $data]);
     }
 
+    public function saved(Request $request)
+    {
+        return $this->index($request);
+    }
+
     private function add_meta_data($collection, $request)
     {
         return $collection->merge([ 'path' => $request->getPathInfo()]);

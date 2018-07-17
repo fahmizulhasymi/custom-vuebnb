@@ -6,18 +6,16 @@
 <script>
 import { groupByCountry } from "../library/helpers";
 
-import routeMixin from "../mixin/route-mixin";
 import ListingSummaryGroup from "../components/ListingSummaryGroup.vue";
 
 export default {
-  mixins: [routeMixin],
-  data() {
-    return {
-      listing_groups: []
-    };
-  },
   components: {
     ListingSummaryGroup
+  },
+  computed: {
+    listing_groups() {
+      return groupByCountry(this.$store.state.listing.summaries);
+    }
   },
   methods: {
     assignData({ listings }) {
@@ -26,14 +24,3 @@ export default {
   }
 };
 </script>
-<style>
-.home-container {
-  margin: 0 auto;
-  padding: 0 25px;
-}
-@media (min-width: 1131px) {
-  .home-container {
-    width: 1080px;
-  }
-}
-</style>

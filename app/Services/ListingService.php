@@ -8,7 +8,7 @@ class ListingService
 {
     public static function get_listing_summaries()
     {
-        $collection = Listing::all(['id', 'address', 'city', 'country', 'title', 'price_per_night']);
+        $collection = Listing::take(20)->get(['id', 'address', 'city', 'country', 'title', 'price_per_night']);
         $collection->transform(function ($listing) {
             $listing->thumb = asset('images/1/Image_1_thumb.jpg');
             return $listing;

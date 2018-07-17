@@ -67,4 +67,9 @@ class ListingController extends Controller
     {
         //
     }
+
+    public function saved()
+    {
+        return $this->index();
+    }
 }

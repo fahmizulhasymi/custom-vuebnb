@@ -22,6 +22,10 @@ const rowSize = 3;
 const listingSummaryWidth = 365;
 
 export default {
+  components: {
+    ListingSummary,
+    CarouselControl
+  },
   props: ["country", "listings"],
   data() {
     return {
@@ -51,10 +55,6 @@ export default {
           this.offset < this.listings.length - rowSize ? "visible" : "hidden"
       };
     }
-  },
-  components: {
-    ListingSummary,
-    CarouselControl
   }
 };
 </script>
