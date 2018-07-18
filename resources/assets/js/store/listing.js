@@ -20,9 +20,6 @@ const mutations = {
         route,
         data
     }) {
-        if (data.auth) {
-            state.auth = data.auth;
-        }
         if (route === 'listing') {
             state.data.push(data.listing);
         } else {

@@ -17,6 +17,22 @@ import App from '../../layouts/App.vue';
 import router from './router'
 import store from './store';
 
+import {
+    HTTP
+} from '../../library/api';
+
+HTTP.interceptors.response.use(response => {
+    return response
+}, error => {
+    if (!axios.isCancel(error)) {
+        if (error.response.status === 401) {
+            console.log('error 401')
+            router.push('login')
+        }
+    }
+    throw error
+})
+
 const app = new Vue({
     el: '#app',
     render: h => h(App),

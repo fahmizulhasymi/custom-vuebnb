@@ -6,10 +6,10 @@
                 <h1>vuebnb</h1>
             </router-link>
             <ul class="links">
-                <li v-if="$store.state.listing.auth">
+                <li v-if="$store.state.user.auth">
                     <router-link :to="{ name: 'saved' }">Saved</router-link>
                 </li>
-                <li v-if="!$store.state.listing.auth">
+                <li v-if="!$store.state.user.auth">
                     <router-link :to="{ name: 'login' }">Log In</router-link>
                 </li>
                 <li v-else>

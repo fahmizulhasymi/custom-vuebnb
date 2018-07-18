@@ -3,7 +3,7 @@ import api from '../library/api';
 // initial state
 const state = {
     saved: [],
-    auth: true
+    auth: false
 }
 
 // getters
@@ -21,16 +21,12 @@ const actions = {
         commit,
         state
     }, id) {
-        if (state.auth) {
-            api.post('/user/toggle_saved', {
-                id
-            }).then(
-                () => commit('toggleSaved', id)
-            );
-        } else {
-            router.push('/login');
-        }
-    }
+        api.post('/user/toggle_saved', {
+            id
+        }).then(
+            () => commit('toggleSaved', id)
+        );
+    },
 }
 
 // mutations
@@ -42,6 +38,9 @@ const mutations = {
         } else {
             state.saved.splice(index, 1);
         }
+    },
+    setAuth(state, isAuthenticated) {
+        state.auth = isAuthenticated;
     }
 }
 

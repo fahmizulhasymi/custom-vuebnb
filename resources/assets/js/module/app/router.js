@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import axios from 'axios';
+import api from '../../library/api';
 import store from './store';
 import routes from '../../router/web'
 import routesApp from '../../router/app'
@@ -32,7 +32,7 @@ Router.beforeEach((to, from, next) => {
     ) {
         next();
     } else if (!serverData.path || to.path !== serverData.path) {
-        axios.get(`/api${to.path}`).then(({
+        api.get(`${to.path}`).then(({
             data
         }) => {
             store.commit('addData', {
@@ -46,6 +46,7 @@ Router.beforeEach((to, from, next) => {
             route: to.name,
             data: serverData
         });
+        store.commit('setAuth', serverData.auth);
         serverData.authData.saved.forEach(id => store.commit('toggleSaved', id));
         next();
     }

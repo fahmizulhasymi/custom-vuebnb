@@ -13,7 +13,10 @@ HTTP.defaults.headers.common = {
 };
 
 export default {
-    post(url, param){
+    get(url) {
+        return HTTP.get(url)
+    },
+    post(url, param) {
         return HTTP.post(url, param)
     }
-}
+};
