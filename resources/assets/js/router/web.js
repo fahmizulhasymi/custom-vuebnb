@@ -1,7 +1,7 @@
 import Page from '../layouts/Page'
 import HomePage from '../pages/Homepage'
+import Login from '../pages/Login.vue';
 import ListingDetail from '../pages/ListingDetail'
-import SavedListing from '../pages/SavedListing.vue';
 import E404 from '../pages/404'
 
 export default [{
@@ -16,9 +16,9 @@ export default [{
             path: 'listing/:listing_id',
             component: ListingDetail
         }, {
-            name: 'saved',
-            path: 'saved',
-            component: SavedListing
+            name: 'login',
+            path: 'login',
+            component: Login
         }],
     },
 

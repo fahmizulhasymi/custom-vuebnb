@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', 'ListingController@index')->name('home');
-Route::get('/saved', 'ListingController@saved')->name('saved');
-Route::get('/listing/{listing}', 'ListingController@show')->name('listing-detail');
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/', 'AppController@index')->name('home');
+Route::get('/personal/saved', 'AppController@saved')->name('saved')->middleware('auth');
+Route::get('/listing/{listing}', 'AppController@show')->name('listing-detail');
+Route::get('/dashboard', 'AppController@dashboard')->name('dashboard');

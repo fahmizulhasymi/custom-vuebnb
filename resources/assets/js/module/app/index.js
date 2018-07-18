@@ -3,7 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-require('./bootstrap');
+require('../../bootstrap');
 
 window.Vue = require('vue');
 
@@ -13,7 +13,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import App from './App.vue';
+import App from '../../layouts/App.vue';
 import router from './router'
 import store from './store';
 

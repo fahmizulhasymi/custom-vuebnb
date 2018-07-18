@@ -12,12 +12,12 @@ export default {
   props: ["id", "button"],
   methods: {
     toggleSaved() {
-      this.$store.commit("toggleSaved", this.id);
+      this.$store.dispatch("toggleSaved", this.id);
     }
   },
   computed: {
     isListingSaved() {
-      return this.$store.state.listing.saved.find(saved => saved === this.id);
+      return this.$store.state.user.saved.find(saved => saved === this.id);
     },
     classes() {
       let saved = this.isListingSaved;

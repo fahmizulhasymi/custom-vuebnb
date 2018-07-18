@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', 'API\ListingController@index');
+Route::get('/', 'API\ListingController@index')->name('base-api');
 Route::get('/saved', 'API\ListingController@index');
 Route::resource('listing', 'API\ListingController');
+Route::post('/user/toggle_saved', 'API\UserController@toggleSaved')->middleware('auth:api');

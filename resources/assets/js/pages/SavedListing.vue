@@ -13,7 +13,7 @@ export default {
   computed: {
     listings() {
       return this.$store.state.listing.summaries.filter(
-        item => this.$store.state.listing.saved.indexOf(item.id) > -1
+        item => this.$store.state.user.saved.indexOf(item.id) > -1
       );
     }
   },

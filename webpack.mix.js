@@ -11,7 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/assets/js/module/app', 'public/js/app.js')
+    .js('resources/assets/js/module/web', 'public/js/web.js')
     .options({
         extractVueStyles: 'public/css/component-style.css'
     })

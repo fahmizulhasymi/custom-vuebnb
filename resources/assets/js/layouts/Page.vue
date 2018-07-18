@@ -6,14 +6,37 @@
                 <h1>vuebnb</h1>
             </router-link>
             <ul class="links">
-                <li>
+                <li v-if="$store.state.listing.auth">
                     <router-link :to="{ name: 'saved' }">Saved</router-link>
+                </li>
+                <li v-if="!$store.state.listing.auth">
+                    <router-link :to="{ name: 'login' }">Log In</router-link>
+                </li>
+                <li v-else>
+                    <a @click="logout">Log Out</a>
+                    <form style="display: hidden" action="/logout" method="POST" id="logout" >
+                        <input type="hidden" name="_token" :value="csrf_token"/>
+                    </form>
                 </li>
             </ul>
         </div>
         <router-view></router-view>
     </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      csrf_token: window.csrf_token
+    };
+  },
+  methods: {
+    logout() {
+      document.getElementById("logout").submit();
+    }
+  }
+};
+</script>
 <style>
 #toolbar {
   display: flex;

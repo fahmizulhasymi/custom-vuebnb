@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import CustomFooter from './components/Footer.vue';
+import CustomFooter from '../components/Footer.vue';
 
 export default {
   name: 'App',

@@ -11,14 +11,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    @stack('top-resource')
-
     <script type="text/javascript">
-        window.vuebnb_server_data  = "{!! addslashes(json_encode($data)) !!}";
+        window.api_url  = "{{ route('base-api') }}";
+        window.csrf_token = "{{ csrf_token() }}"
     </script>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    @stack('top-resource')
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" type="text/css">
